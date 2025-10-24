@@ -1,0 +1,28 @@
+{
+  "name": "contacts-app",
+  "version": "1.0.0",
+  "description": "contacts-app",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "start": "node ./src/index.js",
+    "dev": "nodemon src/index.js  --ignore src/db/db.json",
+    "get-all": "node src/scripts/getAllContacts.js",
+    "generate": "node src/scripts/generateContacts.js",
+    "add-one": "node src/scripts/addOneContact.js",
+    "count": "node src/scripts/countContacts.js",
+    "remove-last": "node src/scripts/removeLastContact.js",
+    "remove-all": "node src/scripts/removeAllContacts.js"
+  },
+  "keywords": [],
+  "author": "Mykhailo Pylypiv <developer.mykhailo@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@faker-js/faker": "^10.1.0",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "nodemon": "^3.1.10"
+  }
+}
