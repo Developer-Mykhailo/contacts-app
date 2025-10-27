@@ -7,13 +7,7 @@
   "scripts": {
     "lint": "eslint src/**/*.js",
     "start": "node ./src/index.js",
-    "dev": "nodemon src/index.js  --ignore src/db/db.json",
-    "get-all": "node src/scripts/getAllContacts.js",
-    "generate": "node src/scripts/generateContacts.js",
-    "add-one": "node src/scripts/addOneContact.js",
-    "count": "node src/scripts/countContacts.js",
-    "remove-last": "node src/scripts/removeLastContact.js",
-    "remove-all": "node src/scripts/removeAllContacts.js"
+    "dev": "nodemon .src/index.js  --ignore src/db/db.json"
   },
   "keywords": [],
   "author": "Mykhailo Pylypiv <developer.mykhailo@gmail.com>",
@@ -30,6 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "http-errors": "^2.0.0",
     "mongoose": "^8.19.2",
     "pino-http": "^11.0.0"
   }

@@ -1,0 +1,23 @@
+{
+  "message": "Welcome to the Students API!",
+  "usage": "This API allows you to manage student records using RESTful routes.",
+  "routes": {
+    "GET": {
+      "/students": "Get all students",
+      "/students/:studentId": "Get a specific student by ID"
+    },
+    "POST": {
+      "/students": "Create a new student"
+    },
+    "PUT": {
+      "/students/:studentId": "Update existing or create new student (upsert)"
+    },
+    "PATCH": {
+      "/students/:studentId": "Partially update student data"
+    },
+    "DELETE": {
+      "/students/:studentId": "Delete student by ID"
+    }
+  },
+  "note": "All requests and responses use JSON format."
+}
