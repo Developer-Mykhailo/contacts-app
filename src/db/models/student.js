@@ -31,4 +31,4 @@ const studentsSchema = new Schema(
   },
 );
 
-export const StudentsCollection = model('students', studentsSchema, 'Students');
+export const StudentsCollection = model('students', studentsSchema);

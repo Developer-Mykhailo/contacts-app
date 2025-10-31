@@ -62,7 +62,7 @@ export const createStudentController = async (req, res) => {
 export const deleteStudentController = async (req, res) => {
   const { studentId } = req.params;
   const student = await deleteStudent(studentId);
-  console.log(student);
+  // console.log(student);
 
   if (!student) {
     throw createHttpError(404, 'Student not found');

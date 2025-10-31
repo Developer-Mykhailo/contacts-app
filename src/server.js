@@ -2,7 +2,7 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import { getEnvVar } from './utils/getEnvVar.js';
-import studentsRouter from './routers/students.js';
+import router from './routers/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { getApiInfo } from './utils/readApiInfo.js';
@@ -30,7 +30,7 @@ export const startServer = async () => {
     res.json({ apiInfo });
   });
 
-  app.use(studentsRouter);
+  app.use(router);
 
   app.use(notFoundHandler);
 

@@ -52,7 +52,7 @@ export const getAllStudents = async ({
   ]);
 
   const paginationData = calculatePaginationData(studentsCount, perPage, page);
-  console.log(students);
+  // console.log(students);
 
   return {
     data: students,
@@ -66,12 +66,14 @@ export const getStudentById = async (studentId) => {
   return student;
 };
 
+//---------------------------------------------------------------
 export const createStudent = async (payload) => {
   const student = await StudentsCollection.create(payload);
-  console.log(student);
+  // console.log(student);
   return student;
 };
 
+//---------------------------------------------------------------
 export const deleteStudent = async (studentId) => {
   const student = await StudentsCollection.findOneAndDelete({
     _id: studentId,
@@ -80,6 +82,7 @@ export const deleteStudent = async (studentId) => {
   return student;
 };
 
+//---------------------------------------------------------------
 export const updateStudent = async (studentId, payload, options = {}) => {
   const rawResult = await StudentsCollection.findByIdAndUpdate(
     { _id: studentId },
