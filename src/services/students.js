@@ -52,7 +52,6 @@ export const getAllStudents = async ({
   ]);
 
   const paginationData = calculatePaginationData(studentsCount, perPage, page);
-  // console.log(students);
 
   return {
     data: students,
