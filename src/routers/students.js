@@ -22,7 +22,11 @@ const router = Router();
 router.use(authenticate);
 
 //---------------------------------------------------------------
-router.get('/', checkRoles(ROLES.TEACHER), ctrlWrapper(getStudentsController));
+router.get(
+  '/',
+  ctrlWrapper(checkRoles(ROLES.TEACHER)),
+  ctrlWrapper(getStudentsController),
+);
 
 router.get(
   '/:studentId',
@@ -39,8 +43,8 @@ router.post(
 );
 
 router.put(
-  checkRoles(ROLES.TEACHER),
   '/:studentId',
+  checkRoles(ROLES.TEACHER),
   isValidId,
   validateBody(createStudentSchema),
   ctrlWrapper(upsertStudentController),
