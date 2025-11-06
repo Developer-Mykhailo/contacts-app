@@ -1,3 +1,4 @@
+// Joi — бібліотека для валідації даних (створення схем перевірки об’єктів, наприклад req.body)
 import Joi from 'joi';
 
 export const registerUserSchema = Joi.object({

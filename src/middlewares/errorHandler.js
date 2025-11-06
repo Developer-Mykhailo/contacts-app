@@ -1,3 +1,4 @@
+// HttpError — клас помилок із http-errors для створення та обробки HTTP-помилок з кодом і повідомленням
 import { HttpError } from 'http-errors';
 
 export const errorHandler = (err, req, res, next) => {

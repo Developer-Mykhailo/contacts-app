@@ -1,4 +1,7 @@
+// Joi — бібліотека для валідації даних (створення схем перевірки об’єктів, наприклад req.body)
 import Joi from 'joi';
+
+// isValidObjectId — функція з mongoose для перевірки, чи є значення коректним MongoDB ObjectId
 import { isValidObjectId } from 'mongoose';
 
 //---------------------------------------------------------------

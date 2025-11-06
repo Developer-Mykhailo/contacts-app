@@ -1,3 +1,4 @@
+// nodemailer — надсилання електронних листів із Node.js (через SMTP або інші транспортні механізми)
 import nodemailer from 'nodemailer';
 
 import { SMTP } from '../constants/index.js';

@@ -1,11 +1,34 @@
+// http-errors — створення стандартних HTTP-помилок (наприклад, 404, 401 і т.д.)
 import createHttpError from 'http-errors';
+
+// bcrypt — хешування паролів і перевірка їх під час логіну
 import bcrypt from 'bcrypt';
+
+// jsonwebtoken — створення та перевірка JWT-токенів для авторизації
 import jwt from 'jsonwebtoken';
 
+// handlebars — шаблонізатор для формування HTML-листів або сторінок
+import handlebars from 'handlebars';
+
+// node:path — робота з файловими шляхами (створення абсолютних, відносних шляхів тощо)
+import path from 'node:path';
+
+// node:fs/promises — асинхронна робота з файловою системою (читання, запис, видалення файлів)
+import fs from 'node:fs/promises';
+
+// node:crypto — генерація випадкових значень (токенів, ключів, ідентифікаторів)
 import { randomBytes } from 'node:crypto';
+
 import { UsersCollection } from '../db/models/user.js';
 import { SessionsCollection } from '../db/models/session.js';
-import { FIFTEEN_MINUTES, JWT, ONE_DAY, SMTP } from '../constants/index.js';
+import {
+  APP_DOMAIN,
+  FIFTEEN_MINUTES,
+  JWT_SECRET,
+  ONE_DAY,
+  SMTP,
+  TEMPLATES_DIR,
+} from '../constants/index.js';
 import { getEnvVar } from '../utils/getEnvVar.js';
 import { sendEmail } from '../utils/sendMail.js';
 
@@ -106,16 +129,32 @@ export const requestResetToken = async (email) => {
       sub: user._id,
       email,
     },
-    getEnvVar(JWT.JWT_SECRET),
+    getEnvVar(JWT_SECRET),
     {
       expiresIn: '15m',
     },
   );
 
+  const resetPasswordTemplatePath = path.join(
+    TEMPLATES_DIR,
+    'reset-password-email.html',
+  );
+
+  const templateSource = (
+    await fs.readFile(resetPasswordTemplatePath)
+  ).toString();
+
+  const template = handlebars.compile(templateSource);
+  const html = template({
+    name: user.name,
+    link: `${getEnvVar(APP_DOMAIN)}/reset-password?token=${resetToken}`,
+  });
+
   await sendEmail({
     from: getEnvVar(SMTP.SMTP_FROM),
     to: email,
     subject: 'Reset your password',
-    html: `<p>Click <a href="${resetToken}">here</a> to reset your password!</p>`,
+    // html: `<p>Click <a href="${resetToken}">here</a> to reset your password!</p>`,
+    html,
   });
 };

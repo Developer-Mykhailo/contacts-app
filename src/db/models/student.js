@@ -1,3 +1,4 @@
+// mongoose — робота з MongoDB через моделі та схеми (ORM для MongoDB)
 import { model, Schema } from 'mongoose';
 
 const studentsSchema = new Schema(

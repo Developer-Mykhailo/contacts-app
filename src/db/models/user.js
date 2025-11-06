@@ -1,3 +1,4 @@
+// mongoose — робота з MongoDB через моделі та схеми (ORM для MongoDB)
 import { model, Schema } from 'mongoose';
 import { ROLES } from '../../constants/index.js';
 

@@ -1,4 +1,6 @@
+// http-errors — створення стандартних HTTP-помилок (наприклад, 404, 401 і т.д.)
 import createHttpError from 'http-errors';
+
 import { StudentsCollection } from '../db/models/student.js';
 import { ROLES } from '../constants/index.js';
 

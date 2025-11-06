@@ -1,4 +1,6 @@
+// express — створення маршрутизаторів (Router) для організації маршрутів за модулями
 import { Router } from 'express';
+
 import studentsRouter from './students.js';
 import authRouter from './auth.js';
 

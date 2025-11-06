@@ -1,6 +1,12 @@
+// express — створення маршрутизаторів (Router) для організації маршрутів за модулями
 import { Router } from 'express';
+
+// ctrlWrapper — утиліта, що обгортає контролери, автоматично обробляючи асинхронні помилки без try/catch
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
+
+// validateBody — middleware для перевірки тіла запиту (req.body) за схемою валідації перед виконанням контролера
 import { validateBody } from '../middlewares/validateBody.js';
+
 import {
   loginUserSchema,
   registerUserSchema,
