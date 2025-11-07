@@ -15,6 +15,7 @@ import router from './routers/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { getApiInfo } from './utils/readApiInfo.js';
+import { UPLOAD_DIR } from './constants/index.js';
 
 const PORT = Number(getEnvVar('PORT', 3000));
 
@@ -37,6 +38,8 @@ export const startServer = async () => {
     const apiInfo = await getApiInfo();
     res.json({ apiInfo });
   });
+
+  app.use('/uploads', express.static(UPLOAD_DIR));
 
   app.use(router);
 

@@ -10,6 +10,7 @@ import {
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
 import { parseFilterParams } from '../utils/parseFilterParams.js';
+import { saveFileToUploadDir } from '../utils/saveFileToUploadDir.js';
 
 //---------------------------------------------------------------
 export const getStudentsController = async (req, res, next) => {
@@ -95,8 +96,18 @@ export const upsertStudentController = async (req, res) => {
 
 export const patchStudentController = async (req, res) => {
   const { studentId } = req.params;
+  const photo = req.file;
 
-  const result = await updateStudent(studentId, req.body);
+  let photoUrl;
+
+  if (photo) {
+    photoUrl = await saveFileToUploadDir(photo);
+  }
+
+  const result = await updateStudent(studentId, {
+    ...req.body,
+    photo: photoUrl,
+  });
 
   if (!result) {
     throw createHttpError(404, 'Student not found');
@@ -104,6 +115,7 @@ export const patchStudentController = async (req, res) => {
 
   res.json({
     status: 200,
+    message: `Successfully patched a student!`,
     data: result.student,
   });
 };
