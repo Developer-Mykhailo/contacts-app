@@ -4,7 +4,7 @@ import path from 'node:path';
 // node:fs/promises — асинхронна робота з файловою системою (читання, запис, видалення файлів)
 import fs from 'node:fs/promises';
 
-const PATH_TO_API_INFO = path.join(process.cwd(), 'src/docs/api-info.json');
+const PATH_TO_API_INFO = path.join(process.cwd(), 'docs/api-info.json');
 
 export const getApiInfo = async (req, res) => {
   try {
